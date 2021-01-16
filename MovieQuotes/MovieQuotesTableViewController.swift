@@ -9,6 +9,7 @@ import UIKit
 
 class MovieQuotesTableViewController: UITableViewController {
     let movieQuoteCellIdentifier = "MovieQuoteCell"
+    let detailSegueIdentifier = "DetailSegue"
     var movieQuotes = [MovieQuote]()
     
     override func viewDidLoad() {
@@ -54,6 +55,11 @@ class MovieQuotesTableViewController: UITableViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieQuotes.count
     }
@@ -72,6 +78,14 @@ class MovieQuotesTableViewController: UITableViewController {
         if editingStyle == .delete {
             movieQuotes.remove(at: indexPath.row)
             tableView.reloadData()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == detailSegueIdentifier {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                (segue.destination as! MovieQuoteDetailViewController).movieQuote = movieQuotes[indexPath.row]
+            }
         }
     }
 }

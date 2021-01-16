@@ -14,6 +14,7 @@
 		6C1ACA2925A7E4D3001462FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C1ACA2825A7E4D3001462FA /* Assets.xcassets */; };
 		6C1ACA2C25A7E4D4001462FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C1ACA2A25A7E4D4001462FA /* LaunchScreen.storyboard */; };
 		6CAA822025B3635E00B02443 /* MovieQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAA821F25B3635E00B02443 /* MovieQuote.swift */; };
+		6CAA822325B372CB00B02443 /* MovieQuoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAA822225B372CB00B02443 /* MovieQuoteDetailViewController.swift */; };
 		6CD6B48925B3605900210B85 /* MovieQuotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD6B48825B3605900210B85 /* MovieQuotesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		6C1ACA2B25A7E4D4001462FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C1ACA2D25A7E4D4001462FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CAA821F25B3635E00B02443 /* MovieQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuote.swift; sourceTree = "<group>"; };
+		6CAA822225B372CB00B02443 /* MovieQuoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuoteDetailViewController.swift; sourceTree = "<group>"; };
 		6CD6B48825B3605900210B85 /* MovieQuotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuotesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +71,7 @@
 				6C1ACA2D25A7E4D4001462FA /* Info.plist */,
 				6CD6B48825B3605900210B85 /* MovieQuotesTableViewController.swift */,
 				6CAA821F25B3635E00B02443 /* MovieQuote.swift */,
+				6CAA822225B372CB00B02443 /* MovieQuoteDetailViewController.swift */,
 			);
 			path = MovieQuotes;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				6C1ACA2425A7E4D1001462FA /* ViewController.swift in Sources */,
 				6C1ACA2025A7E4D1001462FA /* AppDelegate.swift in Sources */,
 				6CAA822025B3635E00B02443 /* MovieQuote.swift in Sources */,
+				6CAA822325B372CB00B02443 /* MovieQuoteDetailViewController.swift in Sources */,
 				6C1ACA2225A7E4D1001462FA /* SceneDelegate.swift in Sources */,
 				6CD6B48925B3605900210B85 /* MovieQuotesTableViewController.swift in Sources */,
 			);

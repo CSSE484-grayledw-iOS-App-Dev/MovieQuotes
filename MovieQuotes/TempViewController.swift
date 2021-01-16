@@ -15,7 +15,10 @@ class TempViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: tempCellIdentifier, for: indexPath)
+        // Configure the cell
+        cell.textLabel?.text = "This is row \(indexPath.row)"
+        return cell
     }
     
     let tempCellIdentifier = "TempCell";

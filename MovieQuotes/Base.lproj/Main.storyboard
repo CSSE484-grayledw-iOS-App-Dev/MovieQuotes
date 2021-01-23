@@ -60,7 +60,7 @@
         <scene sceneID="txq-ag-dOs">
             <objects>
                 <viewController id="eH5-IU-inO" customClass="MovieQuoteDetailViewController" customModule="MovieQuotes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EJO-Kg-p1B" customClass="MovieQuoteDetailVir">
+                    <view key="view" contentMode="scaleToFill" id="EJO-Kg-p1B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

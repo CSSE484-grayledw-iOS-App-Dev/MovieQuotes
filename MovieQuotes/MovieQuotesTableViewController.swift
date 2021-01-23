@@ -51,9 +51,15 @@ class MovieQuotesTableViewController: UITableViewController {
             let movieTextField = alertController.textFields![1] as UITextField
 //            print(quoteTextField.text!)
 //            print(movieTextField.text!)
-            let newMovieQuote = MovieQuote(quote: quoteTextField.text!, movie: movieTextField.text!)
-            self.movieQuotes.insert(newMovieQuote, at: 0)
-            self.tableView.reloadData()
+//            let newMovieQuote = MovieQuote(quote: quoteTextField.text!, movie: movieTextField.text!)
+//            self.movieQuotes.insert(newMovieQuote, at: 0)
+//            self.tableView.reloadData()
+            self.movieQuotesRef.addDocument(data: [
+                "quote": quoteTextField.text!,
+                "movie": movieTextField.text!,
+                "created": Timestamp.init()
+            
+            ])
         }
         alertController.addAction(submitAction)
         
@@ -63,12 +69,12 @@ class MovieQuotesTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        movieQuotesRef.addSnapshotListener(includeMetadataChanges: true, listener: { (querySnapshot, error) in
+        movieQuotesRef.order(by: "created", descending: true).limit(to: 50).addSnapshotListener(includeMetadataChanges: true, listener: { (querySnapshot, error) in
             if let querySnapshot = querySnapshot {
                 self.movieQuotes.removeAll()
                 querySnapshot.documents.forEach { (documentSnapshot) in
-                    print(documentSnapshot.documentID)
-                    print(documentSnapshot.data())
+//                    print(documentSnapshot.documentID)
+//                    print(documentSnapshot.data())
                     self.movieQuotes.append(MovieQuote(documentSnapshot: documentSnapshot))
                 }
                 self.tableView.reloadData()

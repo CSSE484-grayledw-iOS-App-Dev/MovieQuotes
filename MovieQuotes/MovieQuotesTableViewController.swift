@@ -14,6 +14,7 @@ class MovieQuotesTableViewController: UITableViewController {
     var movieQuotesRef: CollectionReference!
     var movieQuotesListener: ListenerRegistration!
     var isShowingAllQuotes = true
+    var authStateListenerHandler: AuthStateDidChangeListenerHandle!
     
     var movieQuotes = [MovieQuote]()
     
@@ -49,10 +50,19 @@ class MovieQuotesTableViewController: UITableViewController {
             self.startListening()
         }
         
+        let signOutAction = UIAlertAction(title: "Sign Out", style: .default) { (action) in
+            do {
+                try Auth.auth().signOut()
+                } catch {
+                    print("Sign out error")
+                }
+            
+        }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         alertController.addAction(showAction)
-        
+        alertController.addAction(signOutAction)
         alertController.addAction(submitAction)
         
         present(alertController, animated: true, completion: nil)
@@ -119,6 +129,15 @@ class MovieQuotesTableViewController: UITableViewController {
 //            print("You are already signed in.")
 //        }
         
+        authStateListenerHandler = Auth.auth().addStateDidChangeListener({ (auth, user) in
+            if(Auth.auth().currentUser == nil) {
+                print("There is no user. Go back to the login page")
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                print("You are signed in already! Stay on this page.")
+            }
+        })
+        
         if(Auth.auth().currentUser == nil) {
             print("There is no user. Go back to the login page.")
         } else {
@@ -160,6 +179,7 @@ class MovieQuotesTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         movieQuotesListener.remove()
+        Auth.auth().removeStateDidChangeListener(authStateListenerHandler)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

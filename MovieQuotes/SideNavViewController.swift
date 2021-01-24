@@ -12,7 +12,9 @@ class SideNavViewController : UIViewController {
     
     
     @IBAction func pressedGoToProfilePage(_ sender: Any) {
-        print("Profile")
+        // print("Profile")
+        dismiss(animated: false)
+        tableViewController.performSegue(withIdentifier: ProfilePageSegueIdentifier, sender: tableViewController)
     }
     
     

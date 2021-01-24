@@ -164,6 +164,21 @@
                                     <action selector="pressedLogInExistingUser:" destination="xUO-uN-t76" eventType="touchUpInside" id="Pco-MP-Hfv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVx-Z3-G5w">
+                                <rect key="frame" x="57" y="445" width="300" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="3m1-wj-sZO"/>
+                                    <constraint firstAttribute="width" constant="300" id="RDL-1b-Bp2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <state key="normal" title="Sign in with Rosefire">
+                                    <color key="titleColor" red="0.50196078431372548" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedRosefireLogin:" destination="xUO-uN-t76" eventType="touchUpInside" id="7ZU-aJ-zau"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lQJ-rM-P1F"/>
                         <color key="backgroundColor" systemColor="systemGrayColor"/>
@@ -173,8 +188,10 @@
                             <constraint firstItem="8XU-nH-dTF" firstAttribute="leading" secondItem="lQJ-rM-P1F" secondAttribute="leading" constant="20" id="8bv-Cy-Plm"/>
                             <constraint firstItem="lQJ-rM-P1F" firstAttribute="trailing" secondItem="iNP-mT-AnY" secondAttribute="trailing" constant="20" id="Kmm-IZ-oZw"/>
                             <constraint firstItem="lQJ-rM-P1F" firstAttribute="trailing" secondItem="IKJ-Ws-gMo" secondAttribute="trailing" constant="20" id="NFT-Z0-Fxj"/>
+                            <constraint firstItem="AVx-Z3-G5w" firstAttribute="centerX" secondItem="lQJ-rM-P1F" secondAttribute="centerX" id="RyY-ZC-78N"/>
                             <constraint firstItem="lQJ-rM-P1F" firstAttribute="trailing" secondItem="8XU-nH-dTF" secondAttribute="trailing" constant="20" id="Y6v-fK-A3I"/>
                             <constraint firstItem="IKJ-Ws-gMo" firstAttribute="top" secondItem="lQJ-rM-P1F" secondAttribute="top" constant="50" id="avR-sN-ywC"/>
+                            <constraint firstItem="AVx-Z3-G5w" firstAttribute="centerY" secondItem="lQJ-rM-P1F" secondAttribute="centerY" id="hKQ-M8-1AU"/>
                             <constraint firstItem="iNP-mT-AnY" firstAttribute="top" secondItem="8XU-nH-dTF" secondAttribute="bottom" constant="35" id="kHg-kZ-WrI"/>
                             <constraint firstItem="TeT-fC-x5p" firstAttribute="top" secondItem="8XU-nH-dTF" secondAttribute="bottom" constant="35" id="nZ3-WJ-wTu"/>
                             <constraint firstItem="IKJ-Ws-gMo" firstAttribute="leading" secondItem="lQJ-rM-P1F" secondAttribute="leading" constant="20" id="npO-vo-SFJ"/>

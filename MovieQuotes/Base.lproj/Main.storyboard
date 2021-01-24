@@ -179,6 +179,14 @@
                                     <action selector="pressedRosefireLogin:" destination="xUO-uN-t76" eventType="touchUpInside" id="7ZU-aJ-zau"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAO-1z-yXW" customClass="GIDSignInButton">
+                                <rect key="frame" x="57" y="540" width="300" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ASd-8U-cex"/>
+                                    <constraint firstAttribute="width" constant="300" id="hbn-q8-f42"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lQJ-rM-P1F"/>
                         <color key="backgroundColor" systemColor="systemGrayColor"/>
@@ -186,27 +194,30 @@
                             <constraint firstItem="TeT-fC-x5p" firstAttribute="leading" secondItem="lQJ-rM-P1F" secondAttribute="leading" constant="20" id="0zu-Xp-h23"/>
                             <constraint firstItem="8XU-nH-dTF" firstAttribute="top" secondItem="IKJ-Ws-gMo" secondAttribute="bottom" constant="30" id="3vY-K8-MrO"/>
                             <constraint firstItem="8XU-nH-dTF" firstAttribute="leading" secondItem="lQJ-rM-P1F" secondAttribute="leading" constant="20" id="8bv-Cy-Plm"/>
+                            <constraint firstItem="RAO-1z-yXW" firstAttribute="centerX" secondItem="lQJ-rM-P1F" secondAttribute="centerX" id="IQF-eZ-zQS"/>
                             <constraint firstItem="lQJ-rM-P1F" firstAttribute="trailing" secondItem="iNP-mT-AnY" secondAttribute="trailing" constant="20" id="Kmm-IZ-oZw"/>
                             <constraint firstItem="lQJ-rM-P1F" firstAttribute="trailing" secondItem="IKJ-Ws-gMo" secondAttribute="trailing" constant="20" id="NFT-Z0-Fxj"/>
                             <constraint firstItem="AVx-Z3-G5w" firstAttribute="centerX" secondItem="lQJ-rM-P1F" secondAttribute="centerX" id="RyY-ZC-78N"/>
                             <constraint firstItem="lQJ-rM-P1F" firstAttribute="trailing" secondItem="8XU-nH-dTF" secondAttribute="trailing" constant="20" id="Y6v-fK-A3I"/>
                             <constraint firstItem="IKJ-Ws-gMo" firstAttribute="top" secondItem="lQJ-rM-P1F" secondAttribute="top" constant="50" id="avR-sN-ywC"/>
-                            <constraint firstItem="AVx-Z3-G5w" firstAttribute="centerY" secondItem="lQJ-rM-P1F" secondAttribute="centerY" id="hKQ-M8-1AU"/>
                             <constraint firstItem="iNP-mT-AnY" firstAttribute="top" secondItem="8XU-nH-dTF" secondAttribute="bottom" constant="35" id="kHg-kZ-WrI"/>
                             <constraint firstItem="TeT-fC-x5p" firstAttribute="top" secondItem="8XU-nH-dTF" secondAttribute="bottom" constant="35" id="nZ3-WJ-wTu"/>
                             <constraint firstItem="IKJ-Ws-gMo" firstAttribute="leading" secondItem="lQJ-rM-P1F" secondAttribute="leading" constant="20" id="npO-vo-SFJ"/>
+                            <constraint firstItem="AVx-Z3-G5w" firstAttribute="centerY" secondItem="lQJ-rM-P1F" secondAttribute="centerY" id="rOh-Gz-uLc"/>
+                            <constraint firstItem="RAO-1z-yXW" firstAttribute="top" secondItem="AVx-Z3-G5w" secondAttribute="bottom" constant="35" id="raJ-5h-gMV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9Q5-9Z-N3o"/>
                     <connections>
                         <outlet property="emailTextField" destination="IKJ-Ws-gMo" id="xmi-Ul-RTt"/>
                         <outlet property="passwordTextField" destination="8XU-nH-dTF" id="pCI-5a-dfa"/>
+                        <outlet property="signInButton" destination="RAO-1z-yXW" id="Af5-3a-1c9"/>
                         <segue destination="VAJ-mF-FKf" kind="show" identifier="ShowListSegue" id="11y-Mr-F5h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8MC-aS-f1n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-946" y="177"/>
+            <point key="canvasLocation" x="-946.37681159420299" y="176.78571428571428"/>
         </scene>
     </scenes>
     <resources>

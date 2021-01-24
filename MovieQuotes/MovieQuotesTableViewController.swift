@@ -58,13 +58,18 @@ class MovieQuotesTableViewController: UITableViewController {
             self.movieQuotesRef.addDocument(data: [
                 "quote": quoteTextField.text!,
                 "movie": movieTextField.text!,
-                "created": Timestamp.init()
-            
+                "created": Timestamp.init(),
+                "author": Auth.auth().currentUser!.uid
             ])
         }
         alertController.addAction(submitAction)
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let movieQuote = movieQuotes[indexPath.row]
+        return Auth.auth().currentUser!.uid == movieQuote.author
     }
     
     override func viewWillAppear(_ animated: Bool) {

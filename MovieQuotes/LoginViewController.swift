@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
     let ShowListSegueIdentifier = "ShowListSegue"
     let REGISTRY_TOKEN = "bd16dbba-c849-48d8-bfbb-848377feb5ec"
     
+    var rosefireName: String?
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -80,6 +82,9 @@ class LoginViewController: UIViewController {
           print("Result = \(result!.name!)")
           print("Result = \(result!.email!)")
           print("Result = \(result!.group!)")
+            
+            self.rosefireName = result!.name!
+          
           Auth.auth().signIn(withCustomToken: result!.token) { (authResult, error) in
             if let error = error {
               print("Firebase sign in error! \(error)")
@@ -90,6 +95,15 @@ class LoginViewController: UIViewController {
           }
         }
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == ShowListSegueIdentifier {
+            // Only segue so silly to check, but I did
+        }
+        
+        print("Checking for user \(Auth.auth().currentUser!.uid)")
+        UserManager.shared.addUser(uid: Auth.auth().currentUser!.uid, name: rosefireName ?? Auth.auth().currentUser!.displayName, photoUrl: Auth.auth().currentUser!.photoURL?.absoluteString)
     }
     
 }

@@ -166,6 +166,30 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6y4-vV-lNr">
+                                <rect key="frame" x="194" y="581" width="200" height="261"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84d-Aq-Ym8">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sp0-aA-RyS">
+                                        <rect key="frame" x="0.0" y="30.5" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="diu-cl-eYQ"/>
+                                            <constraint firstAttribute="height" constant="200" id="xRn-4z-TMX"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unknown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSl-OL-GyG">
+                                        <rect key="frame" x="0.0" y="240.5" width="200" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="44K-4b-6GD"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -173,10 +197,15 @@
                             <constraint firstItem="fpT-tn-dmE" firstAttribute="leading" secondItem="44K-4b-6GD" secondAttribute="leading" constant="20" id="4fD-lc-3yw"/>
                             <constraint firstItem="fpT-tn-dmE" firstAttribute="top" secondItem="44K-4b-6GD" secondAttribute="top" constant="36" id="bxw-2d-vpl"/>
                             <constraint firstItem="44K-4b-6GD" firstAttribute="trailing" secondItem="fpT-tn-dmE" secondAttribute="trailing" constant="20" id="d09-Lg-bTH"/>
+                            <constraint firstItem="44K-4b-6GD" firstAttribute="bottom" secondItem="6y4-vV-lNr" secondAttribute="bottom" constant="20" id="wHR-7C-W5i"/>
+                            <constraint firstItem="44K-4b-6GD" firstAttribute="trailing" secondItem="6y4-vV-lNr" secondAttribute="trailing" constant="20" id="zRU-Jx-m4b"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uAV-3R-DnS"/>
                     <connections>
+                        <outlet property="authorBox" destination="6y4-vV-lNr" id="qBw-yv-tkd"/>
+                        <outlet property="authorNameLabel" destination="BSl-OL-GyG" id="DNN-Wg-NL3"/>
+                        <outlet property="authorProfilePhotoImageView" destination="sp0-aA-RyS" id="ob0-SU-vOc"/>
                         <outlet property="movieLabel" destination="2vH-rg-MC0" id="SgZ-GH-75K"/>
                         <outlet property="quoteLabel" destination="LMf-e5-ig1" id="RNm-wj-1TP"/>
                     </connections>

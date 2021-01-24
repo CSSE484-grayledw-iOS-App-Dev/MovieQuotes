@@ -16,6 +16,10 @@ class MovieQuoteDetailViewController: UIViewController {
     var movieQuoteRef: DocumentReference!
     var movieQuoteListener: ListenerRegistration!
     
+    @IBOutlet weak var authorBox: UIStackView!
+    @IBOutlet weak var authorProfilePhotoImageView: UIImageView!
+    
+    @IBOutlet weak var authorNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,7 @@ class MovieQuoteDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        updateView()
+        authorBox.isHidden = true
         movieQuoteListener = movieQuoteRef.addSnapshotListener({ (documentSnapshot, error) in
             if let error = error {
                 print("Error getting movie quote \(error)")
@@ -42,11 +47,13 @@ class MovieQuoteDetailViewController: UIViewController {
                 self.navigationItem.rightBarButtonItem = nil
             }
             
+            // Get the User Object for this author
+            UserManager.shared.beginListening(uid: self.movieQuote!.author, changeListener: self.updateAuthorBox)
+            
             self.updateView()
         })
     }
-    
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         movieQuoteListener.remove()
@@ -94,5 +101,21 @@ class MovieQuoteDetailViewController: UIViewController {
     func updateView() {
         quoteLabel.text = movieQuote?.quote
         movieLabel.text = movieQuote?.movie
+    }
+    
+    func updateAuthorBox() {
+        print("Update the author box for \(UserManager.shared.name)")
+        
+        authorBox.isHidden = !(UserManager.shared.name.count > 0 || UserManager.shared.photoUrl.count > 0)
+        
+        if UserManager.shared.name.count > 0 {
+            authorNameLabel.text = UserManager.shared.name
+        } else {
+            authorNameLabel.text = "Unknown"
+        }
+        
+        if UserManager.shared.photoUrl.count > 0 {
+            ImageUtilities.load(imageView: authorProfilePhotoImageView, from: UserManager.shared.photoUrl)
+        }
     }
 }

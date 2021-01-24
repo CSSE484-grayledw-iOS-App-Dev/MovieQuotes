@@ -21,16 +21,37 @@ class MovieQuotesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = editButtonItem
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                                            target: self,
-                                                            action: #selector(showAddQuoteDialog))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+//                                                            target: self,
+//                                                            action: #selector(showAddQuoteDialog))
         
 //        movieQuotes.append(MovieQuote(quote: "I'll be back", movie: "The Terminator"))
 //        movieQuotes.append(MovieQuote(quote: "Yo Adrian!", movie: "Rocky"))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(showMenu))
+        
         movieQuotesRef = Firestore.firestore().collection("MovieQuotes")
     }
     
-    @objc func showAddQuoteDialog() {
+    @objc func showMenu() {
+        // Add a dialog -> dialogs are all about crud
+        
+        let alertController = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
+        
+        let submitAction = UIAlertAction(title: "Create Quote", style: .default) { (action) in
+            self.showAddQuoteDialog()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        
+        alertController.addAction(submitAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func showAddQuoteDialog() {
         // Add a dialog -> dialogs are all about crud
         
         let alertController = UIAlertController(title: "Create a new movie quote", message: "", preferredStyle: .alert)

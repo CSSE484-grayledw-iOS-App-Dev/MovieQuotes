@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SideNavViewController : UIViewController {
     
@@ -35,11 +36,19 @@ class SideNavViewController : UIViewController {
     
     @IBAction func pressedDeleteQuotes(_ sender: Any) {
         print("Delete Quotes")
+        tableViewController.setEditing(!tableViewController.isEditing, animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     
     @IBAction func pressedSignOut(_ sender: Any) {
-        print("Sign Out")
+        dismiss(animated: false)
+        do{
+            try Auth.auth().signOut()
+        } catch {
+            print("Sign Out")
+        }
+        
     }
     
     var tableViewController: MovieQuotesTableViewController {

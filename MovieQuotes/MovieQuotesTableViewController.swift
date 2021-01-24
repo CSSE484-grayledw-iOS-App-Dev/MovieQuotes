@@ -13,7 +13,7 @@ class MovieQuotesTableViewController: UITableViewController {
     let detailSegueIdentifier = "DetailSegue"
     var movieQuotesRef: CollectionReference!
     var movieQuotesListener: ListenerRegistration!
-    
+    var isShowingAllQuotes = true
     
     var movieQuotes = [MovieQuote]()
     
@@ -42,15 +42,22 @@ class MovieQuotesTableViewController: UITableViewController {
             self.showAddQuoteDialog()
         }
         
+        let showAction = UIAlertAction(title: self.isShowingAllQuotes ? "Show only my quotes" : "Show all quotes", style: .default) { (action) in
+            // Toggle between the show all vs show mine mode
+            self.isShowingAllQuotes = !self.isShowingAllQuotes
+            // Update the list
+            self.startListening()
+        }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
-        
+        alertController.addAction(showAction)
         
         alertController.addAction(submitAction)
         
         present(alertController, animated: true, completion: nil)
     }
-    
+
     func showAddQuoteDialog() {
         // Add a dialog -> dialogs are all about crud
         
@@ -113,7 +120,21 @@ class MovieQuotesTableViewController: UITableViewController {
         }
         
         tableView.reloadData()
-        movieQuotesListener = movieQuotesRef.order(by: "created", descending: true).limit(to: 50).addSnapshotListener(includeMetadataChanges: true, listener: { (querySnapshot, error) in
+        startListening()
+    }
+    
+    func startListening() {
+        if(movieQuotesListener != nil) {
+            movieQuotesListener.remove()
+        }
+        
+        var query = movieQuotesRef.order(by: "created", descending: true).limit(to: 50)
+        
+        if(!isShowingAllQuotes) {
+            query = query.whereField("author", isEqualTo: Auth.auth().currentUser!.uid)
+        }
+        
+        movieQuotesListener = query.addSnapshotListener(includeMetadataChanges: true, listener: { (querySnapshot, error) in
             if let querySnapshot = querySnapshot {
                 self.movieQuotes.removeAll()
                 querySnapshot.documents.forEach { (documentSnapshot) in
@@ -128,6 +149,7 @@ class MovieQuotesTableViewController: UITableViewController {
             }
         })
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

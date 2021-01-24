@@ -21,7 +21,7 @@ class MovieQuotesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = editButtonItem
+        // navigationItem.leftBarButtonItem = editButtonItem
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
 //                                                            target: self,
 //                                                            action: #selector(showAddQuoteDialog))

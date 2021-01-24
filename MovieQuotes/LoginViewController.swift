@@ -20,6 +20,13 @@ class LoginViewController: UIViewController {
         passwordTextField.placeholder = "Password"
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if Auth.auth().currentUser != nil {
+            print("Someone is already signed in! Just move on.")
+            self.performSegue(withIdentifier: self.ShowListSegueIdentifier, sender: self)
+        }
+    }
     
     @IBAction func pressedSignInNewUser(_ sender: Any) {
         let email = emailTextField.text!
